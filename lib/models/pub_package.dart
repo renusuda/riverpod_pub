@@ -1,11 +1,16 @@
-class PubPackage {
-  const PubPackage({
-    required this.name,
-    required this.version,
-    required this.description,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String name;
-  final String version;
-  final String description;
+part 'pub_package.freezed.dart';
+part 'pub_package.g.dart';
+
+@freezed
+sealed class PubPackage with _$PubPackage {
+  factory PubPackage({
+    required String name,
+    required String version,
+    required String description,
+  }) = _PubPackage;
+
+  factory PubPackage.fromJson(Map<String, Object?> json) =>
+      _$PubPackageFromJson(json);
 }
