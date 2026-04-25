@@ -13,6 +13,7 @@
 migrate_working_dir/
 spec.md
 spec_copy.md
+.claude/settings.local.json
 
 # IntelliJ related
 *.iml
