@@ -8,7 +8,7 @@ class PackagesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final packages = ref.watch(packagesProvider);
+    final packagesAsyncValue = ref.watch(packagesProvider);
 
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
@@ -18,13 +18,18 @@ class PackagesPage extends ConsumerWidget {
         centerTitle: false,
       ),
       body: SafeArea(
-        child: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          itemBuilder: (context, index) =>
-              PackageItem(package: packages[index]),
-          separatorBuilder: (_, _) => const SizedBox(height: 12),
-          itemCount: packages.length,
-        ),
+        child: switch (packagesAsyncValue) {
+          AsyncValue(:final value?) => ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            itemBuilder: (context, index) => PackageItem(package: value[index]),
+            separatorBuilder: (_, _) => const SizedBox(height: 12),
+            itemCount: value.length,
+          ),
+          AsyncValue(error: != null) => Center(
+            child: Text('Error: ${packagesAsyncValue.error}'),
+          ),
+          _ => const Center(child: CircularProgressIndicator()),
+        },
       ),
     );
   }
