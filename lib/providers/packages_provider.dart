@@ -5,7 +5,7 @@ part 'packages_provider.g.dart';
 
 @riverpod
 List<PubPackage> packages(Ref ref) {
-  return const [
+  return [
     PubPackage(
       name: 'flutter_document_reader_core_fullauthrfid',
       version: '9.3.1980',
