@@ -12,6 +12,7 @@
 .swiftpm/
 migrate_working_dir/
 spec.md
+spec_copy.md
 
 # IntelliJ related
 *.iml
