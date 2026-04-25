@@ -32,6 +32,11 @@ class PackagesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
+      appBar: AppBar(
+        title: const Text('pub.dev', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF1c2834),
+        centerTitle: false,
+      ),
       body: SafeArea(
         child: ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: 12),
