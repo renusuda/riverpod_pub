@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pub/providers/packages_provider.dart';
-import 'package:pub/widgets/package_item.dart';
+import 'package:pub/presentation/providers/packages_provider.dart';
+import 'package:pub/presentation/widgets/package_item.dart';
 
 class PackagesPage extends ConsumerWidget {
   const PackagesPage({super.key});
