@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pub/models/package.dart';
+import 'package:pub/domain/package.dart';
 
 class PackageItem extends StatelessWidget {
   const PackageItem({super.key, required this.package});

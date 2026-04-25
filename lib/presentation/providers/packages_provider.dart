@@ -1,4 +1,4 @@
-import 'package:pub/models/package.dart';
+import 'package:pub/domain/package.dart';
 import 'package:pub/repositories/packages_repository.dart';
 import 'package:pub/repositories/remote/fake_packages_remote_data_source.dart';
 import 'package:pub/repositories/remote/packages_remote_data_source.dart';
