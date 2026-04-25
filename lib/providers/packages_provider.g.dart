@@ -13,13 +13,8 @@ part of 'packages_provider.dart';
 final packagesProvider = PackagesProvider._();
 
 final class PackagesProvider
-    extends
-        $FunctionalProvider<
-          List<PubPackage>,
-          List<PubPackage>,
-          List<PubPackage>
-        >
-    with $Provider<List<PubPackage>> {
+    extends $FunctionalProvider<List<Package>, List<Package>, List<Package>>
+    with $Provider<List<Package>> {
   PackagesProvider._()
     : super(
         from: null,
@@ -36,21 +31,21 @@ final class PackagesProvider
 
   @$internal
   @override
-  $ProviderElement<List<PubPackage>> $createElement($ProviderPointer pointer) =>
+  $ProviderElement<List<Package>> $createElement($ProviderPointer pointer) =>
       $ProviderElement(pointer);
 
   @override
-  List<PubPackage> create(Ref ref) {
+  List<Package> create(Ref ref) {
     return packages(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(List<PubPackage> value) {
+  Override overrideWithValue(List<Package> value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<List<PubPackage>>(value),
+      providerOverride: $SyncValueProvider<List<Package>>(value),
     );
   }
 }
 
-String _$packagesHash() => r'cec5634a15e0cfb3e8060e5d5b5cb10946b1dbfe';
+String _$packagesHash() => r'36e944244737d52c362f2e34df204b7c5a290628';

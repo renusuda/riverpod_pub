@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'pub_package.dart';
+part of 'package.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,22 +13,22 @@ part of 'pub_package.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PubPackage {
+mixin _$Package {
 
  String get name; String get version; String get description;
-/// Create a copy of PubPackage
+/// Create a copy of Package
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PubPackageCopyWith<PubPackage> get copyWith => _$PubPackageCopyWithImpl<PubPackage>(this as PubPackage, _$identity);
+$PackageCopyWith<Package> get copyWith => _$PackageCopyWithImpl<Package>(this as Package, _$identity);
 
-  /// Serializes this PubPackage to a JSON map.
+  /// Serializes this Package to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PubPackage&&(identical(other.name, name) || other.name == name)&&(identical(other.version, version) || other.version == version)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Package&&(identical(other.name, name) || other.name == name)&&(identical(other.version, version) || other.version == version)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -37,15 +37,15 @@ int get hashCode => Object.hash(runtimeType,name,version,description);
 
 @override
 String toString() {
-  return 'PubPackage(name: $name, version: $version, description: $description)';
+  return 'Package(name: $name, version: $version, description: $description)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PubPackageCopyWith<$Res>  {
-  factory $PubPackageCopyWith(PubPackage value, $Res Function(PubPackage) _then) = _$PubPackageCopyWithImpl;
+abstract mixin class $PackageCopyWith<$Res>  {
+  factory $PackageCopyWith(Package value, $Res Function(Package) _then) = _$PackageCopyWithImpl;
 @useResult
 $Res call({
  String name, String version, String description
@@ -56,14 +56,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$PubPackageCopyWithImpl<$Res>
-    implements $PubPackageCopyWith<$Res> {
-  _$PubPackageCopyWithImpl(this._self, this._then);
+class _$PackageCopyWithImpl<$Res>
+    implements $PackageCopyWith<$Res> {
+  _$PackageCopyWithImpl(this._self, this._then);
 
-  final PubPackage _self;
-  final $Res Function(PubPackage) _then;
+  final Package _self;
+  final $Res Function(Package) _then;
 
-/// Create a copy of PubPackage
+/// Create a copy of Package
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? version = null,Object? description = null,}) {
   return _then(_self.copyWith(
@@ -77,8 +77,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [PubPackage].
-extension PubPackagePatterns on PubPackage {
+/// Adds pattern-matching-related methods to [Package].
+extension PackagePatterns on Package {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -91,10 +91,10 @@ extension PubPackagePatterns on PubPackage {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PubPackage value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Package value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _PubPackage() when $default != null:
+case _Package() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -113,10 +113,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PubPackage value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Package value)  $default,){
 final _that = this;
 switch (_that) {
-case _PubPackage():
+case _Package():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -131,10 +131,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PubPackage value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Package value)?  $default,){
 final _that = this;
 switch (_that) {
-case _PubPackage() when $default != null:
+case _Package() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -154,7 +154,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String version,  String description)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _PubPackage() when $default != null:
+case _Package() when $default != null:
 return $default(_that.name,_that.version,_that.description);case _:
   return orElse();
 
@@ -175,7 +175,7 @@ return $default(_that.name,_that.version,_that.description);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String version,  String description)  $default,) {final _that = this;
 switch (_that) {
-case _PubPackage():
+case _Package():
 return $default(_that.name,_that.version,_that.description);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -192,7 +192,7 @@ return $default(_that.name,_that.version,_that.description);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String version,  String description)?  $default,) {final _that = this;
 switch (_that) {
-case _PubPackage() when $default != null:
+case _Package() when $default != null:
 return $default(_that.name,_that.version,_that.description);case _:
   return null;
 
@@ -204,28 +204,28 @@ return $default(_that.name,_that.version,_that.description);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _PubPackage implements PubPackage {
-   _PubPackage({required this.name, required this.version, required this.description});
-  factory _PubPackage.fromJson(Map<String, dynamic> json) => _$PubPackageFromJson(json);
+class _Package implements Package {
+   _Package({required this.name, required this.version, required this.description});
+  factory _Package.fromJson(Map<String, dynamic> json) => _$PackageFromJson(json);
 
 @override final  String name;
 @override final  String version;
 @override final  String description;
 
-/// Create a copy of PubPackage
+/// Create a copy of Package
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$PubPackageCopyWith<_PubPackage> get copyWith => __$PubPackageCopyWithImpl<_PubPackage>(this, _$identity);
+_$PackageCopyWith<_Package> get copyWith => __$PackageCopyWithImpl<_Package>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$PubPackageToJson(this, );
+  return _$PackageToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PubPackage&&(identical(other.name, name) || other.name == name)&&(identical(other.version, version) || other.version == version)&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Package&&(identical(other.name, name) || other.name == name)&&(identical(other.version, version) || other.version == version)&&(identical(other.description, description) || other.description == description));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -234,15 +234,15 @@ int get hashCode => Object.hash(runtimeType,name,version,description);
 
 @override
 String toString() {
-  return 'PubPackage(name: $name, version: $version, description: $description)';
+  return 'Package(name: $name, version: $version, description: $description)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$PubPackageCopyWith<$Res> implements $PubPackageCopyWith<$Res> {
-  factory _$PubPackageCopyWith(_PubPackage value, $Res Function(_PubPackage) _then) = __$PubPackageCopyWithImpl;
+abstract mixin class _$PackageCopyWith<$Res> implements $PackageCopyWith<$Res> {
+  factory _$PackageCopyWith(_Package value, $Res Function(_Package) _then) = __$PackageCopyWithImpl;
 @override @useResult
 $Res call({
  String name, String version, String description
@@ -253,17 +253,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$PubPackageCopyWithImpl<$Res>
-    implements _$PubPackageCopyWith<$Res> {
-  __$PubPackageCopyWithImpl(this._self, this._then);
+class __$PackageCopyWithImpl<$Res>
+    implements _$PackageCopyWith<$Res> {
+  __$PackageCopyWithImpl(this._self, this._then);
 
-  final _PubPackage _self;
-  final $Res Function(_PubPackage) _then;
+  final _Package _self;
+  final $Res Function(_Package) _then;
 
-/// Create a copy of PubPackage
+/// Create a copy of Package
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? version = null,Object? description = null,}) {
-  return _then(_PubPackage(
+  return _then(_Package(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable

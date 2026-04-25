@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pub/main.dart';
 
 void main() {
-  testWidgets('shows pub package list', (tester) async {
+  testWidgets('shows package list', (tester) async {
     await tester.pumpWidget(const MyApp());
 
     expect(find.text('geophrase_flutter'), findsOneWidget);

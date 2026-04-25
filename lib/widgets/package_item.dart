@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pub/models/pub_package.dart';
+import 'package:pub/models/package.dart';
 
 class PackageItem extends StatelessWidget {
   const PackageItem({super.key, required this.package});
 
-  final PubPackage package;
+  final Package package;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,7 @@ class PackageItem extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           package.description,
-          style: textTheme.bodyMedium?.copyWith(
-            color: const Color(0xFF4F4A55),
-          ),
+          style: textTheme.bodyMedium?.copyWith(color: const Color(0xFF4F4A55)),
         ),
       ],
     );
