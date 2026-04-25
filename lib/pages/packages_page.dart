@@ -24,9 +24,7 @@ const _packages = [
 ];
 
 class PackagesPage extends StatelessWidget {
-  const PackagesPage({super.key, required this.title});
-
-  final String title;
+  const PackagesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
