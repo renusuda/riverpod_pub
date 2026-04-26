@@ -3,13 +3,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/presentation/providers/packages_provider.dart';
 import 'package:pub/presentation/widgets/package_item.dart';
 
+const _pageSize = 100;
+
 class PackagesPage extends ConsumerWidget {
   const PackagesPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final packagesAsyncValue = ref.watch(packagesProvider(page: 1));
-
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
       appBar: AppBar(
@@ -18,41 +18,39 @@ class PackagesPage extends ConsumerWidget {
         centerTitle: false,
       ),
       body: SafeArea(
-        child: switch (packagesAsyncValue) {
-          AsyncValue(:final value?) => RefreshIndicator(
-            onRefresh: () => ref.refresh(packagesProvider(page: 1).future),
-            child: NotificationListener<ScrollEndNotification>(
-              onNotification: _handleScrollNotification,
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemBuilder: (context, index) =>
-                    PackageItem(package: value[index]),
-                separatorBuilder: (_, _) => const SizedBox(height: 12),
-                itemCount: value.length,
-              ),
-            ),
+        child: RefreshIndicator(
+          onRefresh: () {
+            ref.invalidate(packagesProvider);
+            return ref.read(packagesProvider(page: 1).future);
+          },
+          child: ListView.custom(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            physics: const AlwaysScrollableScrollPhysics(),
+            childrenDelegate: SliverChildBuilderDelegate((context, index) {
+              final page = index ~/ _pageSize + 1;
+              final packagesAsyncValue = ref.watch(
+                packagesProvider(page: page),
+              );
+
+              return packagesAsyncValue.when(
+                loading: () => const SizedBox(
+                  height: 60,
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+                error: (err, _) => Center(child: Text('Error: $err')),
+                data: (packages) {
+                  final indexInPage = index % _pageSize;
+                  if (indexInPage >= packages.length) return null;
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: PackageItem(package: packages[indexInPage]),
+                  );
+                },
+              );
+            }),
           ),
-          AsyncValue(error: != null) => Center(
-            child: Text('Error: ${packagesAsyncValue.error}'),
-          ),
-          _ => const Center(child: CircularProgressIndicator()),
-        },
+        ),
       ),
     );
-  }
-
-  bool _handleScrollNotification(ScrollEndNotification notification) {
-    final metrics = notification.metrics;
-    final isAtBottom =
-        metrics.maxScrollExtent > 0 &&
-        metrics.pixels >= metrics.maxScrollExtent;
-
-    if (isAtBottom) {
-      // ignore: avoid_print
-      print('Reached bottom');
-    }
-
-    return false;
   }
 }
