@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pub/domain/package.dart';
-import 'package:pub/presentation/pages/package_detail_page.dart';
+import 'package:pub/router.dart';
 
 class PackageItem extends StatelessWidget {
   const PackageItem({super.key, required this.package});
@@ -11,11 +12,9 @@ class PackageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return ListTile(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => PackageDetailPage(package: package),
-        ),
+      onTap: () => context.pushNamed(
+        AppRoute.packageDetail.name,
+        pathParameters: {'name': package.name},
       ),
       title: Row(
         children: [

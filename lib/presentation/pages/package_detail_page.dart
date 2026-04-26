@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pub/domain/package.dart';
 
 class PackageDetailPage extends StatelessWidget {
-  const PackageDetailPage({super.key, required this.package});
+  const PackageDetailPage({super.key, required this.packageName});
 
-  final Package package;
+  final String packageName;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    const dummyPackageVersion = '0.0.0';
+    const dummyDescription = 'hogehoge';
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
       appBar: AppBar(
@@ -21,12 +22,12 @@ class PackageDetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: [
           Text(
-            '${package.name} ${package.version}',
+            '$packageName $dummyPackageVersion',
             style: textTheme.titleLarge,
           ),
           const SizedBox(height: 12),
           Text(
-            package.description,
+            dummyDescription,
             style: textTheme.bodyMedium?.copyWith(
               color: const Color(0xFF4F4A55),
             ),
