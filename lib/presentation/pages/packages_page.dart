@@ -39,10 +39,7 @@ class PackagesPage extends ConsumerWidget {
                 data: (packages) {
                   final indexInPage = index % _pageSize;
                   if (indexInPage >= packages.length) return null;
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: PackageItem(package: packages[indexInPage]),
-                  );
+                  return PackageItem(package: packages[indexInPage]);
                 },
               );
             }),
