@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:pub/presentation/pages/package_detail_page.dart';
-import 'package:pub/presentation/pages/packages_page.dart';
+import 'package:pub/src/presentation/pages/package_detail_page.dart';
+import 'package:pub/src/presentation/pages/packages_page.dart';
 
 enum AppRoute { packages, packageDetail }
 

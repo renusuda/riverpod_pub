@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pub/presentation/providers/packages_provider.dart';
-import 'package:pub/presentation/widgets/package_item.dart';
-import 'package:pub/presentation/widgets/package_item_shimmer.dart';
-import 'package:pub/presentation/widgets/package_search_bar.dart';
+import 'package:pub/src/presentation/providers/packages_provider.dart';
+import 'package:pub/src/presentation/widgets/package_item.dart';
+import 'package:pub/src/presentation/widgets/package_item_shimmer.dart';
+import 'package:pub/src/presentation/widgets/package_search_bar.dart';
 
 const _pageSize = 100;
 

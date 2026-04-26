@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pub/domain/package.dart';
+import 'package:pub/src/domain/package.dart';
 
 abstract class PackagesRemoteDataSource {
   Future<List<Package>> fetchPackages({

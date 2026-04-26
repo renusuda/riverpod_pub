@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pub/domain/package.dart';
-import 'package:pub/router.dart';
+import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/router.dart';
 
 class PackageItem extends StatelessWidget {
   const PackageItem({super.key, required this.package});

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pub/domain/package.dart';
+import 'package:pub/src/domain/package.dart';
 
 part 'packages_response_dto.freezed.dart';
 part 'packages_response_dto.g.dart';

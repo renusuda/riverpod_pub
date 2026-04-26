@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:pub/domain/package.dart';
-import 'package:pub/data/packages_repository.dart';
-import 'package:pub/data/remote/api_packages_remote_data_source.dart';
-import 'package:pub/data/remote/packages_remote_data_source.dart';
+import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/data/packages_repository.dart';
+import 'package:pub/src/data/remote/api_packages_remote_data_source.dart';
+import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'packages_provider.g.dart';

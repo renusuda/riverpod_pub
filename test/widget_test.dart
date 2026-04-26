@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pub/data/remote/packages_remote_data_source.dart';
-import 'package:pub/app.dart';
-import 'package:pub/domain/package.dart';
-import 'package:pub/presentation/providers/packages_provider.dart';
+import 'package:pub/src/data/remote/packages_remote_data_source.dart';
+import 'package:pub/src/app.dart';
+import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/presentation/providers/packages_provider.dart';
 
 class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
   int callCount = 0;
