@@ -18,33 +18,43 @@ class PackagesPage extends ConsumerWidget {
         backgroundColor: const Color(0xFF1c2834),
         centerTitle: false,
       ),
-      body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () {
-            ref.invalidate(packagesProvider);
-            return ref.read(packagesProvider(page: 1).future);
-          },
-          child: ListView.custom(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            physics: const AlwaysScrollableScrollPhysics(),
-            childrenDelegate: SliverChildBuilderDelegate((context, index) {
-              final page = index ~/ _pageSize + 1;
-              final packagesAsyncValue = ref.watch(
-                packagesProvider(page: page),
-              );
-
-              return packagesAsyncValue.when(
-                loading: () => const PackageItemShimmer(),
-                error: (err, _) => Center(child: Text('Error: $err')),
-                data: (packages) {
-                  final indexInPage = index % _pageSize;
-                  if (indexInPage >= packages.length) return null;
-                  return PackageItem(package: packages[indexInPage]);
-                },
-              );
-            }),
+      body: Column(
+        children: [
+          Image.asset(
+            'assets/search_background.png',
+            height: 80,
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
-        ),
+          Expanded(
+            child: RefreshIndicator(
+              onRefresh: () {
+                ref.invalidate(packagesProvider);
+                return ref.read(packagesProvider(page: 1).future);
+              },
+              child: ListView.custom(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                physics: const AlwaysScrollableScrollPhysics(),
+                childrenDelegate: SliverChildBuilderDelegate((context, index) {
+                  final page = index ~/ _pageSize + 1;
+                  final packagesAsyncValue = ref.watch(
+                    packagesProvider(page: page),
+                  );
+
+                  return packagesAsyncValue.when(
+                    loading: () => const PackageItemShimmer(),
+                    error: (err, _) => Center(child: Text('Error: $err')),
+                    data: (packages) {
+                      final indexInPage = index % _pageSize;
+                      if (indexInPage >= packages.length) return null;
+                      return PackageItem(package: packages[indexInPage]);
+                    },
+                  );
+                }),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
