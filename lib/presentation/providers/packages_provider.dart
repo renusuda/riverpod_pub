@@ -21,5 +21,5 @@ PackagesRepository packagesRepository(Ref ref) {
 @riverpod
 Future<List<Package>> packages(Ref ref) async {
   final repository = ref.watch(packagesRepositoryProvider);
-  return repository.fetchPackages();
+  return repository.fetchPackages(page: 1);
 }

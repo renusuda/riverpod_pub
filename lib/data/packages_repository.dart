@@ -7,8 +7,8 @@ class PackagesRepository {
 
   final PackagesRemoteDataSource _remoteDataSource;
 
-  Future<List<Package>> fetchPackages() async {
-    final packages = await _remoteDataSource.fetchPackages();
+  Future<List<Package>> fetchPackages({required int page}) async {
+    final packages = await _remoteDataSource.fetchPackages(page: page);
     return packages;
   }
 }

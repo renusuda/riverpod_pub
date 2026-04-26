@@ -10,7 +10,7 @@ class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
   int callCount = 0;
 
   @override
-  Future<List<Package>> fetchPackages() async {
+  Future<List<Package>> fetchPackages({required int page}) async {
     callCount++;
 
     if (callCount > 1) {
