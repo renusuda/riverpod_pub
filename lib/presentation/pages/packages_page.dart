@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/presentation/providers/packages_provider.dart';
 import 'package:pub/presentation/widgets/package_item.dart';
 import 'package:pub/presentation/widgets/package_item_shimmer.dart';
+import 'package:pub/presentation/widgets/package_search_bar.dart';
 
 const _pageSize = 100;
 
@@ -20,12 +21,7 @@ class PackagesPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          Image.asset(
-            'assets/search_background.png',
-            height: 80,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
+          const PackageSearchBar(),
           Expanded(
             child: RefreshIndicator(
               onRefresh: () {
