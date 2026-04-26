@@ -8,7 +8,7 @@ class PackagesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final packagesAsyncValue = ref.watch(packagesProvider);
+    final packagesAsyncValue = ref.watch(packagesProvider(page: 1));
 
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
@@ -20,7 +20,7 @@ class PackagesPage extends ConsumerWidget {
       body: SafeArea(
         child: switch (packagesAsyncValue) {
           AsyncValue(:final value?) => RefreshIndicator(
-            onRefresh: () => ref.refresh(packagesProvider.future),
+            onRefresh: () => ref.refresh(packagesProvider(page: 1).future),
             child: NotificationListener<ScrollEndNotification>(
               onNotification: _handleScrollNotification,
               child: ListView.separated(

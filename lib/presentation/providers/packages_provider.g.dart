@@ -106,7 +106,7 @@ String _$packagesRepositoryHash() =>
     r'4cd15bf7d486ddab19fff2b6088d31d24f84aec6';
 
 @ProviderFor(packages)
-final packagesProvider = PackagesProvider._();
+final packagesProvider = PackagesFamily._();
 
 final class PackagesProvider
     extends
@@ -116,19 +116,26 @@ final class PackagesProvider
           FutureOr<List<Package>>
         >
     with $FutureModifier<List<Package>>, $FutureProvider<List<Package>> {
-  PackagesProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'packagesProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+  PackagesProvider._({
+    required PackagesFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'packagesProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
   String debugGetCreateSourceHash() => _$packagesHash();
+
+  @override
+  String toString() {
+    return r'packagesProvider'
+        ''
+        '($argument)';
+  }
 
   @$internal
   @override
@@ -138,8 +145,37 @@ final class PackagesProvider
 
   @override
   FutureOr<List<Package>> create(Ref ref) {
-    return packages(ref);
+    final argument = this.argument as int;
+    return packages(ref, page: argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is PackagesProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-String _$packagesHash() => r'cc3a2593c8d8eb3c64cda4f3c6e5a4d7d69cf36e';
+String _$packagesHash() => r'4bf018e63845ad8d013f32c838ac4d1868ee2bbe';
+
+final class PackagesFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<List<Package>>, int> {
+  PackagesFamily._()
+    : super(
+        retry: null,
+        name: r'packagesProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PackagesProvider call({required int page}) =>
+      PackagesProvider._(argument: page, from: this);
+
+  @override
+  String toString() => r'packagesProvider';
+}

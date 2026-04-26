@@ -19,7 +19,7 @@ PackagesRepository packagesRepository(Ref ref) {
 }
 
 @riverpod
-Future<List<Package>> packages(Ref ref) async {
+Future<List<Package>> packages(Ref ref, {required int page}) async {
   final repository = ref.watch(packagesRepositoryProvider);
-  return repository.fetchPackages(page: 1);
+  return repository.fetchPackages(page: page);
 }
