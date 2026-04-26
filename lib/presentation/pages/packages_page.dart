@@ -19,11 +19,16 @@ class PackagesPage extends ConsumerWidget {
       ),
       body: SafeArea(
         child: switch (packagesAsyncValue) {
-          AsyncValue(:final value?) => ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            itemBuilder: (context, index) => PackageItem(package: value[index]),
-            separatorBuilder: (_, _) => const SizedBox(height: 12),
-            itemCount: value.length,
+          AsyncValue(:final value?) => RefreshIndicator(
+            onRefresh: () => ref.refresh(packagesProvider.future),
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) =>
+                  PackageItem(package: value[index]),
+              separatorBuilder: (_, _) => const SizedBox(height: 12),
+              itemCount: value.length,
+            ),
           ),
           AsyncValue(error: != null) => Center(
             child: Text('Error: ${packagesAsyncValue.error}'),
