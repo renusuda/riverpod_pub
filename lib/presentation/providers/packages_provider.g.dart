@@ -55,7 +55,7 @@ final class PackagesRemoteDataSourceProvider
 }
 
 String _$packagesRemoteDataSourceHash() =>
-    r'1df869f50a4349221754934d47107f875f775579';
+    r'0ec823968ca475822746c4de3191b6a5813b9a81';
 
 @ProviderFor(packagesRepository)
 final packagesRepositoryProvider = PackagesRepositoryProvider._();
