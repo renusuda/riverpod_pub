@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/presentation/providers/packages_provider.dart';
 import 'package:pub/presentation/widgets/package_item.dart';
+import 'package:pub/presentation/widgets/package_item_shimmer.dart';
 
 const _pageSize = 100;
 
@@ -33,10 +34,7 @@ class PackagesPage extends ConsumerWidget {
               );
 
               return packagesAsyncValue.when(
-                loading: () => const SizedBox(
-                  height: 60,
-                  child: Center(child: CircularProgressIndicator()),
-                ),
+                loading: () => const PackageItemShimmer(),
                 error: (err, _) => Center(child: Text('Error: $err')),
                 data: (packages) {
                   final indexInPage = index % _pageSize;
