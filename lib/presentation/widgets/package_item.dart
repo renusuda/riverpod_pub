@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pub/domain/package.dart';
+import 'package:pub/presentation/pages/package_detail_page.dart';
 
 class PackageItem extends StatelessWidget {
   const PackageItem({super.key, required this.package});
@@ -10,6 +11,12 @@ class PackageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return ListTile(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => PackageDetailPage(package: package),
+        ),
+      ),
       title: Row(
         children: [
           Expanded(
