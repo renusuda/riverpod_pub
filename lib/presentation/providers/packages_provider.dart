@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:pub/domain/package.dart';
 import 'package:pub/data/packages_repository.dart';
 import 'package:pub/data/remote/api_packages_remote_data_source.dart';
@@ -20,6 +21,8 @@ PackagesRepository packagesRepository(Ref ref) {
 
 @riverpod
 Future<List<Package>> packages(Ref ref, {required int page}) async {
+  final cancelToken = CancelToken();
+  ref.onDispose(cancelToken.cancel);
   final repository = ref.watch(packagesRepositoryProvider);
-  return await repository.fetchPackages(page: page);
+  return await repository.fetchPackages(page: page, cancelToken: cancelToken);
 }

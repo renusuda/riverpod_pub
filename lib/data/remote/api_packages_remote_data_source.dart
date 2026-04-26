@@ -10,10 +10,14 @@ class ApiPackagesRemoteDataSource implements PackagesRemoteDataSource {
   final Dio _dio;
 
   @override
-  Future<List<Package>> fetchPackages({required int page}) async {
+  Future<List<Package>> fetchPackages({
+    required int page,
+    CancelToken? cancelToken,
+  }) async {
     final response = await _dio.get<Map<String, Object?>>(
       'packages',
       queryParameters: {'page': page},
+      cancelToken: cancelToken,
     );
     final dto = PackagesResponseDto.fromJson(response.data!);
     return dto.packages.map((package) => package.toDomain()).toList();

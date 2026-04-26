@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -10,7 +11,10 @@ class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
   int callCount = 0;
 
   @override
-  Future<List<Package>> fetchPackages({required int page}) async {
+  Future<List<Package>> fetchPackages({
+    required int page,
+    CancelToken? cancelToken,
+  }) async {
     callCount++;
 
     if (callCount > 1) {
