@@ -17,4 +17,14 @@ class PackagesRepository {
       cancelToken: cancelToken,
     );
   }
+
+  Future<Package> fetchPackageDetail({
+    required String packageName,
+    CancelToken? cancelToken,
+  }) async {
+    return await _remoteDataSource.fetchPackageDetail(
+      packageName: packageName,
+      cancelToken: cancelToken,
+    );
+  }
 }

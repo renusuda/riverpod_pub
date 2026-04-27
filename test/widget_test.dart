@@ -41,6 +41,18 @@ class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
       ),
     ];
   }
+
+  @override
+  Future<Package> fetchPackageDetail({
+    required String packageName,
+    CancelToken? cancelToken,
+  }) async {
+    return Package(
+      name: packageName,
+      version: '1.4.2',
+      description: 'Detailed package description.',
+    );
+  }
 }
 
 void main() {
@@ -83,5 +95,25 @@ void main() {
     expect(remoteDataSource.callCount, 2);
     expect(find.text('riverpod'), findsOneWidget);
     expect(find.text('geophrase_flutter'), findsNothing);
+  });
+
+  testWidgets('shows package detail', (tester) async {
+    final remoteDataSource = _PackagesRemoteDataSource();
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          packagesRemoteDataSourceProvider.overrideWithValue(remoteDataSource),
+        ],
+        child: const App(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('geophrase_flutter'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('geophrase_flutter 1.4.2'), findsOneWidget);
+    expect(find.text('Detailed package description.'), findsOneWidget);
   });
 }

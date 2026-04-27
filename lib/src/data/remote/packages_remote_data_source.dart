@@ -6,4 +6,9 @@ abstract class PackagesRemoteDataSource {
     required int page,
     CancelToken? cancelToken,
   });
+
+  Future<Package> fetchPackageDetail({
+    required String packageName,
+    CancelToken? cancelToken,
+  });
 }

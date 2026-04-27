@@ -26,3 +26,14 @@ Future<List<Package>> packages(Ref ref, {required int page}) async {
   final repository = ref.watch(packagesRepositoryProvider);
   return await repository.fetchPackages(page: page, cancelToken: cancelToken);
 }
+
+@riverpod
+Future<Package> packageDetail(Ref ref, {required String packageName}) async {
+  final cancelToken = CancelToken();
+  ref.onDispose(cancelToken.cancel);
+  final repository = ref.watch(packagesRepositoryProvider);
+  return await repository.fetchPackageDetail(
+    packageName: packageName,
+    cancelToken: cancelToken,
+  );
+}

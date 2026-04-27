@@ -9,7 +9,7 @@ part of 'packages_response_dto.dart';
 _PackagesResponseDto _$PackagesResponseDtoFromJson(Map<String, dynamic> json) =>
     _PackagesResponseDto(
       packages: (json['packages'] as List<dynamic>)
-          .map((e) => PackageDto.fromJson(e as Map<String, dynamic>))
+          .map((e) => PackageResponseDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -17,12 +17,13 @@ Map<String, dynamic> _$PackagesResponseDtoToJson(
   _PackagesResponseDto instance,
 ) => <String, dynamic>{'packages': instance.packages};
 
-_PackageDto _$PackageDtoFromJson(Map<String, dynamic> json) => _PackageDto(
-  name: json['name'] as String,
-  latest: PackageLatestDto.fromJson(json['latest'] as Map<String, dynamic>),
-);
+_PackageResponseDto _$PackageResponseDtoFromJson(Map<String, dynamic> json) =>
+    _PackageResponseDto(
+      name: json['name'] as String,
+      latest: PackageLatestDto.fromJson(json['latest'] as Map<String, dynamic>),
+    );
 
-Map<String, dynamic> _$PackageDtoToJson(_PackageDto instance) =>
+Map<String, dynamic> _$PackageResponseDtoToJson(_PackageResponseDto instance) =>
     <String, dynamic>{'name': instance.name, 'latest': instance.latest};
 
 _PackageLatestDto _$PackageLatestDtoFromJson(Map<String, dynamic> json) =>

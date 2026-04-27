@@ -6,24 +6,25 @@ part 'packages_response_dto.g.dart';
 
 @freezed
 sealed class PackagesResponseDto with _$PackagesResponseDto {
-  const factory PackagesResponseDto({required List<PackageDto> packages}) =
-      _PackagesResponseDto;
+  const factory PackagesResponseDto({
+    required List<PackageResponseDto> packages,
+  }) = _PackagesResponseDto;
 
   factory PackagesResponseDto.fromJson(Map<String, Object?> json) =>
       _$PackagesResponseDtoFromJson(json);
 }
 
 @freezed
-sealed class PackageDto with _$PackageDto {
-  const PackageDto._();
+sealed class PackageResponseDto with _$PackageResponseDto {
+  const PackageResponseDto._();
 
-  const factory PackageDto({
+  const factory PackageResponseDto({
     required String name,
     required PackageLatestDto latest,
-  }) = _PackageDto;
+  }) = _PackageResponseDto;
 
-  factory PackageDto.fromJson(Map<String, Object?> json) =>
-      _$PackageDtoFromJson(json);
+  factory PackageResponseDto.fromJson(Map<String, Object?> json) =>
+      _$PackageResponseDtoFromJson(json);
 
   Package toDomain() {
     return Package(

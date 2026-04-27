@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PackagesResponseDto {
 
- List<PackageDto> get packages;
+ List<PackageResponseDto> get packages;
 /// Create a copy of PackagesResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $PackagesResponseDtoCopyWith<$Res>  {
   factory $PackagesResponseDtoCopyWith(PackagesResponseDto value, $Res Function(PackagesResponseDto) _then) = _$PackagesResponseDtoCopyWithImpl;
 @useResult
 $Res call({
- List<PackageDto> packages
+ List<PackageResponseDto> packages
 });
 
 
@@ -68,7 +68,7 @@ class _$PackagesResponseDtoCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? packages = null,}) {
   return _then(_self.copyWith(
 packages: null == packages ? _self.packages : packages // ignore: cast_nullable_to_non_nullable
-as List<PackageDto>,
+as List<PackageResponseDto>,
   ));
 }
 
@@ -150,7 +150,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<PackageDto> packages)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<PackageResponseDto> packages)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PackagesResponseDto() when $default != null:
 return $default(_that.packages);case _:
@@ -171,7 +171,7 @@ return $default(_that.packages);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<PackageDto> packages)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<PackageResponseDto> packages)  $default,) {final _that = this;
 switch (_that) {
 case _PackagesResponseDto():
 return $default(_that.packages);}
@@ -188,7 +188,7 @@ return $default(_that.packages);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<PackageDto> packages)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<PackageResponseDto> packages)?  $default,) {final _that = this;
 switch (_that) {
 case _PackagesResponseDto() when $default != null:
 return $default(_that.packages);case _:
@@ -203,11 +203,11 @@ return $default(_that.packages);case _:
 @JsonSerializable()
 
 class _PackagesResponseDto implements PackagesResponseDto {
-  const _PackagesResponseDto({required final  List<PackageDto> packages}): _packages = packages;
+  const _PackagesResponseDto({required final  List<PackageResponseDto> packages}): _packages = packages;
   factory _PackagesResponseDto.fromJson(Map<String, dynamic> json) => _$PackagesResponseDtoFromJson(json);
 
- final  List<PackageDto> _packages;
-@override List<PackageDto> get packages {
+ final  List<PackageResponseDto> _packages;
+@override List<PackageResponseDto> get packages {
   if (_packages is EqualUnmodifiableListView) return _packages;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_packages);
@@ -247,7 +247,7 @@ abstract mixin class _$PackagesResponseDtoCopyWith<$Res> implements $PackagesRes
   factory _$PackagesResponseDtoCopyWith(_PackagesResponseDto value, $Res Function(_PackagesResponseDto) _then) = __$PackagesResponseDtoCopyWithImpl;
 @override @useResult
 $Res call({
- List<PackageDto> packages
+ List<PackageResponseDto> packages
 });
 
 
@@ -267,7 +267,7 @@ class __$PackagesResponseDtoCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? packages = null,}) {
   return _then(_PackagesResponseDto(
 packages: null == packages ? _self._packages : packages // ignore: cast_nullable_to_non_nullable
-as List<PackageDto>,
+as List<PackageResponseDto>,
   ));
 }
 
@@ -276,22 +276,22 @@ as List<PackageDto>,
 
 
 /// @nodoc
-mixin _$PackageDto {
+mixin _$PackageResponseDto {
 
  String get name; PackageLatestDto get latest;
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$PackageDtoCopyWith<PackageDto> get copyWith => _$PackageDtoCopyWithImpl<PackageDto>(this as PackageDto, _$identity);
+$PackageResponseDtoCopyWith<PackageResponseDto> get copyWith => _$PackageResponseDtoCopyWithImpl<PackageResponseDto>(this as PackageResponseDto, _$identity);
 
-  /// Serializes this PackageDto to a JSON map.
+  /// Serializes this PackageResponseDto to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageDto&&(identical(other.name, name) || other.name == name)&&(identical(other.latest, latest) || other.latest == latest));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageResponseDto&&(identical(other.name, name) || other.name == name)&&(identical(other.latest, latest) || other.latest == latest));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -300,15 +300,15 @@ int get hashCode => Object.hash(runtimeType,name,latest);
 
 @override
 String toString() {
-  return 'PackageDto(name: $name, latest: $latest)';
+  return 'PackageResponseDto(name: $name, latest: $latest)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $PackageDtoCopyWith<$Res>  {
-  factory $PackageDtoCopyWith(PackageDto value, $Res Function(PackageDto) _then) = _$PackageDtoCopyWithImpl;
+abstract mixin class $PackageResponseDtoCopyWith<$Res>  {
+  factory $PackageResponseDtoCopyWith(PackageResponseDto value, $Res Function(PackageResponseDto) _then) = _$PackageResponseDtoCopyWithImpl;
 @useResult
 $Res call({
  String name, PackageLatestDto latest
@@ -319,14 +319,14 @@ $PackageLatestDtoCopyWith<$Res> get latest;
 
 }
 /// @nodoc
-class _$PackageDtoCopyWithImpl<$Res>
-    implements $PackageDtoCopyWith<$Res> {
-  _$PackageDtoCopyWithImpl(this._self, this._then);
+class _$PackageResponseDtoCopyWithImpl<$Res>
+    implements $PackageResponseDtoCopyWith<$Res> {
+  _$PackageResponseDtoCopyWithImpl(this._self, this._then);
 
-  final PackageDto _self;
-  final $Res Function(PackageDto) _then;
+  final PackageResponseDto _self;
+  final $Res Function(PackageResponseDto) _then;
 
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? latest = null,}) {
   return _then(_self.copyWith(
@@ -335,7 +335,7 @@ as String,latest: null == latest ? _self.latest : latest // ignore: cast_nullabl
 as PackageLatestDto,
   ));
 }
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -348,8 +348,8 @@ $PackageLatestDtoCopyWith<$Res> get latest {
 }
 
 
-/// Adds pattern-matching-related methods to [PackageDto].
-extension PackageDtoPatterns on PackageDto {
+/// Adds pattern-matching-related methods to [PackageResponseDto].
+extension PackageResponseDtoPatterns on PackageResponseDto {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -362,10 +362,10 @@ extension PackageDtoPatterns on PackageDto {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PackageDto value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PackageResponseDto value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _PackageDto() when $default != null:
+case _PackageResponseDto() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -384,10 +384,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PackageDto value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PackageResponseDto value)  $default,){
 final _that = this;
 switch (_that) {
-case _PackageDto():
+case _PackageResponseDto():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -402,10 +402,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PackageDto value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PackageResponseDto value)?  $default,){
 final _that = this;
 switch (_that) {
-case _PackageDto() when $default != null:
+case _PackageResponseDto() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -425,7 +425,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  PackageLatestDto latest)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _PackageDto() when $default != null:
+case _PackageResponseDto() when $default != null:
 return $default(_that.name,_that.latest);case _:
   return orElse();
 
@@ -446,7 +446,7 @@ return $default(_that.name,_that.latest);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  PackageLatestDto latest)  $default,) {final _that = this;
 switch (_that) {
-case _PackageDto():
+case _PackageResponseDto():
 return $default(_that.name,_that.latest);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -463,7 +463,7 @@ return $default(_that.name,_that.latest);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  PackageLatestDto latest)?  $default,) {final _that = this;
 switch (_that) {
-case _PackageDto() when $default != null:
+case _PackageResponseDto() when $default != null:
 return $default(_that.name,_that.latest);case _:
   return null;
 
@@ -475,27 +475,27 @@ return $default(_that.name,_that.latest);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _PackageDto extends PackageDto {
-  const _PackageDto({required this.name, required this.latest}): super._();
-  factory _PackageDto.fromJson(Map<String, dynamic> json) => _$PackageDtoFromJson(json);
+class _PackageResponseDto extends PackageResponseDto {
+  const _PackageResponseDto({required this.name, required this.latest}): super._();
+  factory _PackageResponseDto.fromJson(Map<String, dynamic> json) => _$PackageResponseDtoFromJson(json);
 
 @override final  String name;
 @override final  PackageLatestDto latest;
 
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$PackageDtoCopyWith<_PackageDto> get copyWith => __$PackageDtoCopyWithImpl<_PackageDto>(this, _$identity);
+_$PackageResponseDtoCopyWith<_PackageResponseDto> get copyWith => __$PackageResponseDtoCopyWithImpl<_PackageResponseDto>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$PackageDtoToJson(this, );
+  return _$PackageResponseDtoToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageDto&&(identical(other.name, name) || other.name == name)&&(identical(other.latest, latest) || other.latest == latest));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageResponseDto&&(identical(other.name, name) || other.name == name)&&(identical(other.latest, latest) || other.latest == latest));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -504,15 +504,15 @@ int get hashCode => Object.hash(runtimeType,name,latest);
 
 @override
 String toString() {
-  return 'PackageDto(name: $name, latest: $latest)';
+  return 'PackageResponseDto(name: $name, latest: $latest)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$PackageDtoCopyWith<$Res> implements $PackageDtoCopyWith<$Res> {
-  factory _$PackageDtoCopyWith(_PackageDto value, $Res Function(_PackageDto) _then) = __$PackageDtoCopyWithImpl;
+abstract mixin class _$PackageResponseDtoCopyWith<$Res> implements $PackageResponseDtoCopyWith<$Res> {
+  factory _$PackageResponseDtoCopyWith(_PackageResponseDto value, $Res Function(_PackageResponseDto) _then) = __$PackageResponseDtoCopyWithImpl;
 @override @useResult
 $Res call({
  String name, PackageLatestDto latest
@@ -523,24 +523,24 @@ $Res call({
 
 }
 /// @nodoc
-class __$PackageDtoCopyWithImpl<$Res>
-    implements _$PackageDtoCopyWith<$Res> {
-  __$PackageDtoCopyWithImpl(this._self, this._then);
+class __$PackageResponseDtoCopyWithImpl<$Res>
+    implements _$PackageResponseDtoCopyWith<$Res> {
+  __$PackageResponseDtoCopyWithImpl(this._self, this._then);
 
-  final _PackageDto _self;
-  final $Res Function(_PackageDto) _then;
+  final _PackageResponseDto _self;
+  final $Res Function(_PackageResponseDto) _then;
 
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? latest = null,}) {
-  return _then(_PackageDto(
+  return _then(_PackageResponseDto(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,latest: null == latest ? _self.latest : latest // ignore: cast_nullable_to_non_nullable
 as PackageLatestDto,
   ));
 }
 
-/// Create a copy of PackageDto
+/// Create a copy of PackageResponseDto
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

@@ -160,7 +160,7 @@ final class PackagesProvider
   }
 }
 
-String _$packagesHash() => r'4bf018e63845ad8d013f32c838ac4d1868ee2bbe';
+String _$packagesHash() => r'80e513a788023ab32a924674d43032e2b53ec60d';
 
 final class PackagesFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<Package>>, int> {
@@ -178,4 +178,73 @@ final class PackagesFamily extends $Family
 
   @override
   String toString() => r'packagesProvider';
+}
+
+@ProviderFor(packageDetail)
+final packageDetailProvider = PackageDetailFamily._();
+
+final class PackageDetailProvider
+    extends $FunctionalProvider<AsyncValue<Package>, Package, FutureOr<Package>>
+    with $FutureModifier<Package>, $FutureProvider<Package> {
+  PackageDetailProvider._({
+    required PackageDetailFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'packageDetailProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$packageDetailHash();
+
+  @override
+  String toString() {
+    return r'packageDetailProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  $FutureProviderElement<Package> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<Package> create(Ref ref) {
+    final argument = this.argument as String;
+    return packageDetail(ref, packageName: argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is PackageDetailProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$packageDetailHash() => r'b79b059f678b6ba49d8612021429b081cb71ff63';
+
+final class PackageDetailFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<Package>, String> {
+  PackageDetailFamily._()
+    : super(
+        retry: null,
+        name: r'packageDetailProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PackageDetailProvider call({required String packageName}) =>
+      PackageDetailProvider._(argument: packageName, from: this);
+
+  @override
+  String toString() => r'packageDetailProvider';
 }
