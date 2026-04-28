@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 
 class PackagesRepository {
@@ -23,6 +24,16 @@ class PackagesRepository {
     CancelToken? cancelToken,
   }) async {
     return await _remoteDataSource.fetchPackageDetail(
+      packageName: packageName,
+      cancelToken: cancelToken,
+    );
+  }
+
+  Future<PackageScore> fetchPackageScore({
+    required String packageName,
+    CancelToken? cancelToken,
+  }) async {
+    return await _remoteDataSource.fetchPackageScore(
       packageName: packageName,
       cancelToken: cancelToken,
     );

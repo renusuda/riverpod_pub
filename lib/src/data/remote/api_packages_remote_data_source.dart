@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 import 'package:pub/src/data/remote/packages_response_dto.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 
 class ApiPackagesRemoteDataSource implements PackagesRemoteDataSource {
   ApiPackagesRemoteDataSource({Dio? dio})
@@ -33,6 +34,19 @@ class ApiPackagesRemoteDataSource implements PackagesRemoteDataSource {
       cancelToken: cancelToken,
     );
     final dto = PackageResponseDto.fromJson(response.data!);
+    return dto.toDomain();
+  }
+
+  @override
+  Future<PackageScore> fetchPackageScore({
+    required String packageName,
+    CancelToken? cancelToken,
+  }) async {
+    final response = await _dio.get<Map<String, Object?>>(
+      'packages/$packageName/score',
+      cancelToken: cancelToken,
+    );
+    final dto = PackageScoreDto.fromJson(response.data!);
     return dto.toDomain();
   }
 }

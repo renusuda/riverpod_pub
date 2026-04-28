@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 import 'package:pub/src/presentation/providers/packages_provider.dart';
 
 class PackageDetailPage extends ConsumerWidget {
@@ -47,6 +48,106 @@ class _PackageDetailBody extends StatelessWidget {
         Text(
           package.description,
           style: textTheme.bodyMedium?.copyWith(color: const Color(0xFF4F4A55)),
+        ),
+        const SizedBox(height: 72),
+        _PackageScoreSummary(score: package.score!),
+      ],
+    );
+  }
+}
+
+class _PackageScoreSummary extends StatelessWidget {
+  const _PackageScoreSummary({required this.score});
+
+  final PackageScore score;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _PackageScoreItem(value: score.likeCount.toString(), label: 'LIKES'),
+        _PackagePubPointsItem(
+          grantedPoints: score.grantedPoints,
+          maxPoints: score.maxPoints,
+          label: 'PUB POINTS',
+        ),
+      ],
+    );
+  }
+}
+
+class _PackageScoreItem extends StatelessWidget {
+  const _PackageScoreItem({required this.value, required this.label});
+
+  final String value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        Text(
+          value,
+          style: textTheme.displaySmall?.copyWith(
+            color: const Color(0xFF1967D2),
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 12),
+        Text(
+          label,
+          style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w400),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+}
+
+class _PackagePubPointsItem extends StatelessWidget {
+  const _PackagePubPointsItem({
+    required this.grantedPoints,
+    required this.maxPoints,
+    required this.label,
+  });
+
+  final int grantedPoints;
+  final int maxPoints;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      children: [
+        Text.rich(
+          TextSpan(
+            text: grantedPoints.toString(),
+            style: const TextStyle(color: Color(0xFF1967D2)),
+            children: [
+              TextSpan(
+                text: '/$maxPoints',
+                style: textTheme.displaySmall?.copyWith(
+                  color: const Color(0xFF1967D2),
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
+          style: textTheme.displaySmall?.copyWith(
+            color: const Color(0xFF1967D2),
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 12),
+        Text(
+          label,
+          style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w400),
+          textAlign: TextAlign.center,
         ),
       ],
     );

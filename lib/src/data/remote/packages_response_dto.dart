@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 
 part 'packages_response_dto.freezed.dart';
 part 'packages_response_dto.g.dart';
@@ -31,6 +32,28 @@ sealed class PackageResponseDto with _$PackageResponseDto {
       name: name,
       version: latest.version,
       description: latest.pubspec.description,
+    );
+  }
+}
+
+@freezed
+sealed class PackageScoreDto with _$PackageScoreDto {
+  const PackageScoreDto._();
+
+  const factory PackageScoreDto({
+    required int likeCount,
+    required int grantedPoints,
+    required int maxPoints,
+  }) = _PackageScoreDto;
+
+  factory PackageScoreDto.fromJson(Map<String, Object?> json) =>
+      _$PackageScoreDtoFromJson(json);
+
+  PackageScore toDomain() {
+    return PackageScore(
+      likeCount: likeCount,
+      grantedPoints: grantedPoints,
+      maxPoints: maxPoints,
     );
   }
 }

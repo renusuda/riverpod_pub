@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 
 abstract class PackagesRemoteDataSource {
   Future<List<Package>> fetchPackages({
@@ -8,6 +9,11 @@ abstract class PackagesRemoteDataSource {
   });
 
   Future<Package> fetchPackageDetail({
+    required String packageName,
+    CancelToken? cancelToken,
+  });
+
+  Future<PackageScore> fetchPackageScore({
     required String packageName,
     CancelToken? cancelToken,
   });

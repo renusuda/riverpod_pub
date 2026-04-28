@@ -554,6 +554,269 @@ $PackageLatestDtoCopyWith<$Res> get latest {
 
 
 /// @nodoc
+mixin _$PackageScoreDto {
+
+ int get likeCount; int get grantedPoints; int get maxPoints;
+/// Create a copy of PackageScoreDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PackageScoreDtoCopyWith<PackageScoreDto> get copyWith => _$PackageScoreDtoCopyWithImpl<PackageScoreDto>(this as PackageScoreDto, _$identity);
+
+  /// Serializes this PackageScoreDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PackageScoreDto&&(identical(other.likeCount, likeCount) || other.likeCount == likeCount)&&(identical(other.grantedPoints, grantedPoints) || other.grantedPoints == grantedPoints)&&(identical(other.maxPoints, maxPoints) || other.maxPoints == maxPoints));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,likeCount,grantedPoints,maxPoints);
+
+@override
+String toString() {
+  return 'PackageScoreDto(likeCount: $likeCount, grantedPoints: $grantedPoints, maxPoints: $maxPoints)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $PackageScoreDtoCopyWith<$Res>  {
+  factory $PackageScoreDtoCopyWith(PackageScoreDto value, $Res Function(PackageScoreDto) _then) = _$PackageScoreDtoCopyWithImpl;
+@useResult
+$Res call({
+ int likeCount, int grantedPoints, int maxPoints
+});
+
+
+
+
+}
+/// @nodoc
+class _$PackageScoreDtoCopyWithImpl<$Res>
+    implements $PackageScoreDtoCopyWith<$Res> {
+  _$PackageScoreDtoCopyWithImpl(this._self, this._then);
+
+  final PackageScoreDto _self;
+  final $Res Function(PackageScoreDto) _then;
+
+/// Create a copy of PackageScoreDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? likeCount = null,Object? grantedPoints = null,Object? maxPoints = null,}) {
+  return _then(_self.copyWith(
+likeCount: null == likeCount ? _self.likeCount : likeCount // ignore: cast_nullable_to_non_nullable
+as int,grantedPoints: null == grantedPoints ? _self.grantedPoints : grantedPoints // ignore: cast_nullable_to_non_nullable
+as int,maxPoints: null == maxPoints ? _self.maxPoints : maxPoints // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [PackageScoreDto].
+extension PackageScoreDtoPatterns on PackageScoreDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PackageScoreDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PackageScoreDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PackageScoreDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _PackageScoreDto():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PackageScoreDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PackageScoreDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int likeCount,  int grantedPoints,  int maxPoints)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PackageScoreDto() when $default != null:
+return $default(_that.likeCount,_that.grantedPoints,_that.maxPoints);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int likeCount,  int grantedPoints,  int maxPoints)  $default,) {final _that = this;
+switch (_that) {
+case _PackageScoreDto():
+return $default(_that.likeCount,_that.grantedPoints,_that.maxPoints);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int likeCount,  int grantedPoints,  int maxPoints)?  $default,) {final _that = this;
+switch (_that) {
+case _PackageScoreDto() when $default != null:
+return $default(_that.likeCount,_that.grantedPoints,_that.maxPoints);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _PackageScoreDto extends PackageScoreDto {
+  const _PackageScoreDto({required this.likeCount, required this.grantedPoints, required this.maxPoints}): super._();
+  factory _PackageScoreDto.fromJson(Map<String, dynamic> json) => _$PackageScoreDtoFromJson(json);
+
+@override final  int likeCount;
+@override final  int grantedPoints;
+@override final  int maxPoints;
+
+/// Create a copy of PackageScoreDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PackageScoreDtoCopyWith<_PackageScoreDto> get copyWith => __$PackageScoreDtoCopyWithImpl<_PackageScoreDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$PackageScoreDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PackageScoreDto&&(identical(other.likeCount, likeCount) || other.likeCount == likeCount)&&(identical(other.grantedPoints, grantedPoints) || other.grantedPoints == grantedPoints)&&(identical(other.maxPoints, maxPoints) || other.maxPoints == maxPoints));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,likeCount,grantedPoints,maxPoints);
+
+@override
+String toString() {
+  return 'PackageScoreDto(likeCount: $likeCount, grantedPoints: $grantedPoints, maxPoints: $maxPoints)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PackageScoreDtoCopyWith<$Res> implements $PackageScoreDtoCopyWith<$Res> {
+  factory _$PackageScoreDtoCopyWith(_PackageScoreDto value, $Res Function(_PackageScoreDto) _then) = __$PackageScoreDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ int likeCount, int grantedPoints, int maxPoints
+});
+
+
+
+
+}
+/// @nodoc
+class __$PackageScoreDtoCopyWithImpl<$Res>
+    implements _$PackageScoreDtoCopyWith<$Res> {
+  __$PackageScoreDtoCopyWithImpl(this._self, this._then);
+
+  final _PackageScoreDto _self;
+  final $Res Function(_PackageScoreDto) _then;
+
+/// Create a copy of PackageScoreDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? likeCount = null,Object? grantedPoints = null,Object? maxPoints = null,}) {
+  return _then(_PackageScoreDto(
+likeCount: null == likeCount ? _self.likeCount : likeCount // ignore: cast_nullable_to_non_nullable
+as int,grantedPoints: null == grantedPoints ? _self.grantedPoints : grantedPoints // ignore: cast_nullable_to_non_nullable
+as int,maxPoints: null == maxPoints ? _self.maxPoints : maxPoints // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$PackageLatestDto {
 
  String get version; PackagePubspecDto get pubspec;

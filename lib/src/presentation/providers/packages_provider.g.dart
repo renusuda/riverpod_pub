@@ -229,7 +229,7 @@ final class PackageDetailProvider
   }
 }
 
-String _$packageDetailHash() => r'b79b059f678b6ba49d8612021429b081cb71ff63';
+String _$packageDetailHash() => r'cd2a351d10b89494b9e439e0eea705760ca4a8a3';
 
 final class PackageDetailFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Package>, String> {

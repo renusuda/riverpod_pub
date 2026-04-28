@@ -5,7 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 import 'package:pub/src/app.dart';
 import 'package:pub/src/domain/package.dart';
+import 'package:pub/src/domain/package_score.dart';
 import 'package:pub/src/presentation/providers/packages_provider.dart';
+import 'package:pub/src/routing/router.dart';
 
 class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
   int callCount = 0;
@@ -53,9 +55,21 @@ class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
       description: 'Detailed package description.',
     );
   }
+
+  @override
+  Future<PackageScore> fetchPackageScore({
+    required String packageName,
+    CancelToken? cancelToken,
+  }) async {
+    return PackageScore(likeCount: 3964, grantedPoints: 160, maxPoints: 160);
+  }
 }
 
 void main() {
+  setUp(() {
+    goRouter.go('/');
+  });
+
   testWidgets('shows package list', (tester) async {
     final remoteDataSource = _PackagesRemoteDataSource();
 
@@ -115,5 +129,9 @@ void main() {
 
     expect(find.text('geophrase_flutter 1.4.2'), findsOneWidget);
     expect(find.text('Detailed package description.'), findsOneWidget);
+    expect(find.text('3964'), findsOneWidget);
+    expect(find.text('160/160'), findsOneWidget);
+    expect(find.text('LIKES'), findsOneWidget);
+    expect(find.text('PUB POINTS'), findsOneWidget);
   });
 }
