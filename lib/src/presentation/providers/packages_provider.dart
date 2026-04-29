@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:pub/src/data/packages_repository.dart';
+import 'package:pub/src/presentation/providers/ref_extensions.dart';
 import 'package:pub/src/data/remote/api_packages_remote_data_source.dart';
 import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 import 'package:pub/src/domain/package.dart';
@@ -23,16 +23,14 @@ PackagesRepository packagesRepository(Ref ref) {
 
 @riverpod
 Future<List<Package>> packages(Ref ref, {required int page}) async {
-  final cancelToken = CancelToken();
-  ref.onDispose(cancelToken.cancel);
+  final cancelToken = ref.cancelToken();
   final repository = ref.watch(packagesRepositoryProvider);
   return await repository.fetchPackages(page: page, cancelToken: cancelToken);
 }
 
 @riverpod
 Future<Package> packageDetail(Ref ref, {required String packageName}) async {
-  final cancelToken = CancelToken();
-  ref.onDispose(cancelToken.cancel);
+  final cancelToken = ref.cancelToken();
   final repository = ref.watch(packagesRepositoryProvider);
 
   final (package, score) = await (
