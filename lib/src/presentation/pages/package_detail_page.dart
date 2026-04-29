@@ -67,7 +67,7 @@ class _PackageScoreSummary extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _PackageLikes(value: score.likeCount.toString(), label: 'LIKES'),
-        _PackagePubPointsItem(
+        _PackagePubPoints(
           grantedPoints: score.grantedPoints,
           maxPoints: score.maxPoints,
           label: 'PUB POINTS',
@@ -107,8 +107,8 @@ class _PackageLikes extends StatelessWidget {
   }
 }
 
-class _PackagePubPointsItem extends StatelessWidget {
-  const _PackagePubPointsItem({
+class _PackagePubPoints extends StatelessWidget {
+  const _PackagePubPoints({
     required this.grantedPoints,
     required this.maxPoints,
     required this.label,
