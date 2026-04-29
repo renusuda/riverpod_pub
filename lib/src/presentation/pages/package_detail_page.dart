@@ -66,7 +66,7 @@ class _PackageScoreSummary extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _PackageScoreItem(value: score.likeCount.toString(), label: 'LIKES'),
+        _PackageLikes(value: score.likeCount.toString(), label: 'LIKES'),
         _PackagePubPointsItem(
           grantedPoints: score.grantedPoints,
           maxPoints: score.maxPoints,
@@ -77,8 +77,8 @@ class _PackageScoreSummary extends StatelessWidget {
   }
 }
 
-class _PackageScoreItem extends StatelessWidget {
-  const _PackageScoreItem({required this.value, required this.label});
+class _PackageLikes extends StatelessWidget {
+  const _PackageLikes({required this.value, required this.label});
 
   final String value;
   final String label;
