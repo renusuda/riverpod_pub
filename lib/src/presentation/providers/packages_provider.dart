@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:pub/src/data/packages_repository.dart';
 import 'package:pub/src/data/remote/api_packages_remote_data_source.dart';
@@ -45,6 +47,9 @@ Future<Package> packageDetail(Ref ref, {required String packageName}) async {
   ).wait;
 
   final packageWithScore = package.copyWith(score: score);
+
+  final timer = Timer(const Duration(seconds: 5), ref.invalidateSelf);
+  ref.onDispose(timer.cancel);
 
   return packageWithScore;
 }
