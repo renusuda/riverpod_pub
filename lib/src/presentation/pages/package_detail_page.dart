@@ -50,14 +50,14 @@ class _PackageDetailBody extends StatelessWidget {
           style: textTheme.bodyMedium?.copyWith(color: const Color(0xFF4F4A55)),
         ),
         const SizedBox(height: 72),
-        _PackageScoreSummary(score: package.score!),
+        _PackageScore(score: package.score!),
       ],
     );
   }
 }
 
-class _PackageScoreSummary extends StatelessWidget {
-  const _PackageScoreSummary({required this.score});
+class _PackageScore extends StatelessWidget {
+  const _PackageScore({required this.score});
 
   final PackageScore score;
 
