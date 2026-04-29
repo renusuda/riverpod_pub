@@ -1,11 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pub/src/data/local/app_database.dart';
 import 'package:pub/src/data/remote/packages_remote_data_source.dart';
 import 'package:pub/src/app.dart';
 import 'package:pub/src/domain/package.dart';
 import 'package:pub/src/domain/package_score.dart';
+import 'package:pub/src/presentation/providers/package_favorite_provider.dart';
 import 'package:pub/src/presentation/providers/packages_provider.dart';
 import 'package:pub/src/routing/router.dart';
 
@@ -65,6 +68,22 @@ class _PackagesRemoteDataSource implements PackagesRemoteDataSource {
   }
 }
 
+Future<void> _pumpApp(
+  WidgetTester tester, {
+  required PackagesRemoteDataSource remoteDataSource,
+  required AppDatabase database,
+}) {
+  return tester.pumpWidget(
+    ProviderScope(
+      overrides: [
+        packagesRemoteDataSourceProvider.overrideWithValue(remoteDataSource),
+        appDatabaseProvider.overrideWithValue(database),
+      ],
+      child: const App(),
+    ),
+  );
+}
+
 void main() {
   setUp(() {
     goRouter.go('/');
@@ -72,14 +91,13 @@ void main() {
 
   testWidgets('shows package list', (tester) async {
     final remoteDataSource = _PackagesRemoteDataSource();
+    final database = AppDatabase.forTesting(NativeDatabase.memory());
+    addTearDown(database.close);
 
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          packagesRemoteDataSourceProvider.overrideWithValue(remoteDataSource),
-        ],
-        child: const App(),
-      ),
+    await _pumpApp(
+      tester,
+      remoteDataSource: remoteDataSource,
+      database: database,
     );
     await tester.pumpAndSettle();
 
@@ -92,14 +110,13 @@ void main() {
 
   testWidgets('refreshes package list', (tester) async {
     final remoteDataSource = _PackagesRemoteDataSource();
+    final database = AppDatabase.forTesting(NativeDatabase.memory());
+    addTearDown(database.close);
 
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          packagesRemoteDataSourceProvider.overrideWithValue(remoteDataSource),
-        ],
-        child: const App(),
-      ),
+    await _pumpApp(
+      tester,
+      remoteDataSource: remoteDataSource,
+      database: database,
     );
     await tester.pumpAndSettle();
 
@@ -113,14 +130,13 @@ void main() {
 
   testWidgets('shows package detail', (tester) async {
     final remoteDataSource = _PackagesRemoteDataSource();
+    final database = AppDatabase.forTesting(NativeDatabase.memory());
+    addTearDown(database.close);
 
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          packagesRemoteDataSourceProvider.overrideWithValue(remoteDataSource),
-        ],
-        child: const App(),
-      ),
+    await _pumpApp(
+      tester,
+      remoteDataSource: remoteDataSource,
+      database: database,
     );
     await tester.pumpAndSettle();
 
@@ -137,9 +153,12 @@ void main() {
     expect(find.byIcon(Icons.favorite), findsNothing);
 
     await tester.tap(find.byType(FloatingActionButton));
-    await tester.pump();
+    await tester.pumpAndSettle();
 
     expect(find.byIcon(Icons.favorite), findsOneWidget);
     expect(find.byIcon(Icons.favorite_border), findsNothing);
+
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(milliseconds: 1));
   });
 }

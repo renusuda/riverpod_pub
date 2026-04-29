@@ -15,8 +15,6 @@ class PackageDetailPage extends ConsumerWidget {
     final packageAsyncValue = ref.watch(
       packageDetailProvider(packageName: packageName),
     );
-    final isFavorite = ref.watch(packageFavoriteProvider(packageName));
-
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
       appBar: AppBar(
@@ -34,12 +32,7 @@ class PackageDetailPage extends ConsumerWidget {
           data: (package) => _PackageDetailBody(package: package),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: ref
-            .read(packageFavoriteProvider(packageName).notifier)
-            .toggle,
-        child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-      ),
+      floatingActionButton: _FavoriteButton(packageName: packageName),
     );
   }
 }
@@ -163,6 +156,27 @@ class _PackagePubPoints extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
+    );
+  }
+}
+
+class _FavoriteButton extends ConsumerWidget {
+  const _FavoriteButton({required this.packageName});
+
+  final String packageName;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteAsyncValue = ref.watch(packageFavoriteProvider(packageName));
+    return FloatingActionButton(
+      onPressed: favoriteAsyncValue.isLoading
+          ? null
+          : ref.read(packageFavoriteProvider(packageName).notifier).toggle,
+      child: Icon(
+        favoriteAsyncValue.value ?? false
+            ? Icons.favorite
+            : Icons.favorite_border,
+      ),
     );
   }
 }
