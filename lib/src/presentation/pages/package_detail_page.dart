@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pub/src/domain/package.dart';
 import 'package:pub/src/domain/package_score.dart';
+import 'package:pub/src/presentation/providers/package_favorite_provider.dart';
 import 'package:pub/src/presentation/providers/packages_provider.dart';
 
 class PackageDetailPage extends ConsumerWidget {
@@ -14,6 +15,7 @@ class PackageDetailPage extends ConsumerWidget {
     final packageAsyncValue = ref.watch(
       packageDetailProvider(packageName: packageName),
     );
+    final isFavorite = ref.watch(packageFavoriteProvider(packageName));
 
     return Scaffold(
       backgroundColor: const Color(0xFFFEF7FF),
@@ -31,6 +33,12 @@ class PackageDetailPage extends ConsumerWidget {
           error: (err, _) => Center(child: Text('Error: $err')),
           data: (package) => _PackageDetailBody(package: package),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: ref
+            .read(packageFavoriteProvider(packageName).notifier)
+            .toggle,
+        child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
       ),
     );
   }

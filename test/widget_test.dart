@@ -133,5 +133,13 @@ void main() {
     expect(find.text('160/160'), findsOneWidget);
     expect(find.text('LIKES'), findsOneWidget);
     expect(find.text('PUB POINTS'), findsOneWidget);
+    expect(find.byIcon(Icons.favorite_border), findsOneWidget);
+    expect(find.byIcon(Icons.favorite), findsNothing);
+
+    await tester.tap(find.byType(FloatingActionButton));
+    await tester.pump();
+
+    expect(find.byIcon(Icons.favorite), findsOneWidget);
+    expect(find.byIcon(Icons.favorite_border), findsNothing);
   });
 }
