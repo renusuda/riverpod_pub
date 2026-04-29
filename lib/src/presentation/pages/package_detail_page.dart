@@ -23,10 +23,14 @@ class PackageDetailPage extends ConsumerWidget {
         centerTitle: false,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: packageAsyncValue.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, _) => Center(child: Text('Error: $err')),
-        data: (package) => _PackageDetailBody(package: package),
+      body: RefreshIndicator(
+        onRefresh: () =>
+            ref.refresh(packageDetailProvider(packageName: packageName).future),
+        child: packageAsyncValue.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, _) => Center(child: Text('Error: $err')),
+          data: (package) => _PackageDetailBody(package: package),
+        ),
       ),
     );
   }
@@ -42,6 +46,7 @@ class _PackageDetailBody extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return ListView(
       padding: const EdgeInsets.all(16),
+      physics: const AlwaysScrollableScrollPhysics(),
       children: [
         Text('${package.name} ${package.version}', style: textTheme.titleLarge),
         const SizedBox(height: 12),
