@@ -22,10 +22,33 @@ PackagesRepository packagesRepository(Ref ref) {
 }
 
 @riverpod
-Future<List<Package>> packages(Ref ref, {required int page}) async {
+Future<List<Package>> packages(
+  Ref ref, {
+  required int page,
+  required String search,
+}) async {
   final cancelToken = ref.cancelToken();
   final repository = ref.watch(packagesRepositoryProvider);
-  return await repository.fetchPackages(page: page, cancelToken: cancelToken);
+  if (search.isEmpty) {
+    return await repository.fetchPackages(page: page, cancelToken: cancelToken);
+  }
+
+  await Future<void>.delayed(const Duration(milliseconds: 250));
+
+  final packageNames = await repository.searchPackageNames(
+    page: page,
+    search: search,
+    cancelToken: cancelToken,
+  );
+
+  return await Future.wait(
+    packageNames.map(
+      (packageName) => repository.fetchPackageDetail(
+        packageName: packageName,
+        cancelToken: cancelToken,
+      ),
+    ),
+  );
 }
 
 @riverpod

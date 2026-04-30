@@ -8,6 +8,12 @@ abstract class PackagesRemoteDataSource {
     CancelToken? cancelToken,
   });
 
+  Future<List<String>> searchPackageNames({
+    required int page,
+    required String search,
+    CancelToken? cancelToken,
+  });
+
   Future<Package> fetchPackageDetail({
     required String packageName,
     CancelToken? cancelToken,

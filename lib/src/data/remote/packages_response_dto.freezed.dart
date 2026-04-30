@@ -276,6 +276,526 @@ as List<PackageResponseDto>,
 
 
 /// @nodoc
+mixin _$SearchPackagesResponseDto {
+
+ List<SearchPackageResponseDto> get packages;
+/// Create a copy of SearchPackagesResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SearchPackagesResponseDtoCopyWith<SearchPackagesResponseDto> get copyWith => _$SearchPackagesResponseDtoCopyWithImpl<SearchPackagesResponseDto>(this as SearchPackagesResponseDto, _$identity);
+
+  /// Serializes this SearchPackagesResponseDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchPackagesResponseDto&&const DeepCollectionEquality().equals(other.packages, packages));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(packages));
+
+@override
+String toString() {
+  return 'SearchPackagesResponseDto(packages: $packages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SearchPackagesResponseDtoCopyWith<$Res>  {
+  factory $SearchPackagesResponseDtoCopyWith(SearchPackagesResponseDto value, $Res Function(SearchPackagesResponseDto) _then) = _$SearchPackagesResponseDtoCopyWithImpl;
+@useResult
+$Res call({
+ List<SearchPackageResponseDto> packages
+});
+
+
+
+
+}
+/// @nodoc
+class _$SearchPackagesResponseDtoCopyWithImpl<$Res>
+    implements $SearchPackagesResponseDtoCopyWith<$Res> {
+  _$SearchPackagesResponseDtoCopyWithImpl(this._self, this._then);
+
+  final SearchPackagesResponseDto _self;
+  final $Res Function(SearchPackagesResponseDto) _then;
+
+/// Create a copy of SearchPackagesResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? packages = null,}) {
+  return _then(_self.copyWith(
+packages: null == packages ? _self.packages : packages // ignore: cast_nullable_to_non_nullable
+as List<SearchPackageResponseDto>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SearchPackagesResponseDto].
+extension SearchPackagesResponseDtoPatterns on SearchPackagesResponseDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SearchPackagesResponseDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SearchPackagesResponseDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SearchPackagesResponseDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<SearchPackageResponseDto> packages)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto() when $default != null:
+return $default(_that.packages);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<SearchPackageResponseDto> packages)  $default,) {final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto():
+return $default(_that.packages);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<SearchPackageResponseDto> packages)?  $default,) {final _that = this;
+switch (_that) {
+case _SearchPackagesResponseDto() when $default != null:
+return $default(_that.packages);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _SearchPackagesResponseDto implements SearchPackagesResponseDto {
+  const _SearchPackagesResponseDto({required final  List<SearchPackageResponseDto> packages}): _packages = packages;
+  factory _SearchPackagesResponseDto.fromJson(Map<String, dynamic> json) => _$SearchPackagesResponseDtoFromJson(json);
+
+ final  List<SearchPackageResponseDto> _packages;
+@override List<SearchPackageResponseDto> get packages {
+  if (_packages is EqualUnmodifiableListView) return _packages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_packages);
+}
+
+
+/// Create a copy of SearchPackagesResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SearchPackagesResponseDtoCopyWith<_SearchPackagesResponseDto> get copyWith => __$SearchPackagesResponseDtoCopyWithImpl<_SearchPackagesResponseDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$SearchPackagesResponseDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SearchPackagesResponseDto&&const DeepCollectionEquality().equals(other._packages, _packages));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_packages));
+
+@override
+String toString() {
+  return 'SearchPackagesResponseDto(packages: $packages)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SearchPackagesResponseDtoCopyWith<$Res> implements $SearchPackagesResponseDtoCopyWith<$Res> {
+  factory _$SearchPackagesResponseDtoCopyWith(_SearchPackagesResponseDto value, $Res Function(_SearchPackagesResponseDto) _then) = __$SearchPackagesResponseDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ List<SearchPackageResponseDto> packages
+});
+
+
+
+
+}
+/// @nodoc
+class __$SearchPackagesResponseDtoCopyWithImpl<$Res>
+    implements _$SearchPackagesResponseDtoCopyWith<$Res> {
+  __$SearchPackagesResponseDtoCopyWithImpl(this._self, this._then);
+
+  final _SearchPackagesResponseDto _self;
+  final $Res Function(_SearchPackagesResponseDto) _then;
+
+/// Create a copy of SearchPackagesResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? packages = null,}) {
+  return _then(_SearchPackagesResponseDto(
+packages: null == packages ? _self._packages : packages // ignore: cast_nullable_to_non_nullable
+as List<SearchPackageResponseDto>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$SearchPackageResponseDto {
+
+ String get package;
+/// Create a copy of SearchPackageResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SearchPackageResponseDtoCopyWith<SearchPackageResponseDto> get copyWith => _$SearchPackageResponseDtoCopyWithImpl<SearchPackageResponseDto>(this as SearchPackageResponseDto, _$identity);
+
+  /// Serializes this SearchPackageResponseDto to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchPackageResponseDto&&(identical(other.package, package) || other.package == package));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,package);
+
+@override
+String toString() {
+  return 'SearchPackageResponseDto(package: $package)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $SearchPackageResponseDtoCopyWith<$Res>  {
+  factory $SearchPackageResponseDtoCopyWith(SearchPackageResponseDto value, $Res Function(SearchPackageResponseDto) _then) = _$SearchPackageResponseDtoCopyWithImpl;
+@useResult
+$Res call({
+ String package
+});
+
+
+
+
+}
+/// @nodoc
+class _$SearchPackageResponseDtoCopyWithImpl<$Res>
+    implements $SearchPackageResponseDtoCopyWith<$Res> {
+  _$SearchPackageResponseDtoCopyWithImpl(this._self, this._then);
+
+  final SearchPackageResponseDto _self;
+  final $Res Function(SearchPackageResponseDto) _then;
+
+/// Create a copy of SearchPackageResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? package = null,}) {
+  return _then(_self.copyWith(
+package: null == package ? _self.package : package // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [SearchPackageResponseDto].
+extension SearchPackageResponseDtoPatterns on SearchPackageResponseDto {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SearchPackageResponseDto value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SearchPackageResponseDto value)  $default,){
+final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SearchPackageResponseDto value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String package)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto() when $default != null:
+return $default(_that.package);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String package)  $default,) {final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto():
+return $default(_that.package);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String package)?  $default,) {final _that = this;
+switch (_that) {
+case _SearchPackageResponseDto() when $default != null:
+return $default(_that.package);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _SearchPackageResponseDto implements SearchPackageResponseDto {
+  const _SearchPackageResponseDto({required this.package});
+  factory _SearchPackageResponseDto.fromJson(Map<String, dynamic> json) => _$SearchPackageResponseDtoFromJson(json);
+
+@override final  String package;
+
+/// Create a copy of SearchPackageResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SearchPackageResponseDtoCopyWith<_SearchPackageResponseDto> get copyWith => __$SearchPackageResponseDtoCopyWithImpl<_SearchPackageResponseDto>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$SearchPackageResponseDtoToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SearchPackageResponseDto&&(identical(other.package, package) || other.package == package));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,package);
+
+@override
+String toString() {
+  return 'SearchPackageResponseDto(package: $package)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SearchPackageResponseDtoCopyWith<$Res> implements $SearchPackageResponseDtoCopyWith<$Res> {
+  factory _$SearchPackageResponseDtoCopyWith(_SearchPackageResponseDto value, $Res Function(_SearchPackageResponseDto) _then) = __$SearchPackageResponseDtoCopyWithImpl;
+@override @useResult
+$Res call({
+ String package
+});
+
+
+
+
+}
+/// @nodoc
+class __$SearchPackageResponseDtoCopyWithImpl<$Res>
+    implements _$SearchPackageResponseDtoCopyWith<$Res> {
+  __$SearchPackageResponseDtoCopyWithImpl(this._self, this._then);
+
+  final _SearchPackageResponseDto _self;
+  final $Res Function(_SearchPackageResponseDto) _then;
+
+/// Create a copy of SearchPackageResponseDto
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? package = null,}) {
+  return _then(_SearchPackageResponseDto(
+package: null == package ? _self.package : package // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
 mixin _$PackageResponseDto {
 
  String get name; PackageLatestDto get latest;

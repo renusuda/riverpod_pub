@@ -17,6 +17,26 @@ Map<String, dynamic> _$PackagesResponseDtoToJson(
   _PackagesResponseDto instance,
 ) => <String, dynamic>{'packages': instance.packages};
 
+_SearchPackagesResponseDto _$SearchPackagesResponseDtoFromJson(
+  Map<String, dynamic> json,
+) => _SearchPackagesResponseDto(
+  packages: (json['packages'] as List<dynamic>)
+      .map((e) => SearchPackageResponseDto.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
+
+Map<String, dynamic> _$SearchPackagesResponseDtoToJson(
+  _SearchPackagesResponseDto instance,
+) => <String, dynamic>{'packages': instance.packages};
+
+_SearchPackageResponseDto _$SearchPackageResponseDtoFromJson(
+  Map<String, dynamic> json,
+) => _SearchPackageResponseDto(package: json['package'] as String);
+
+Map<String, dynamic> _$SearchPackageResponseDtoToJson(
+  _SearchPackageResponseDto instance,
+) => <String, dynamic>{'package': instance.package};
+
 _PackageResponseDto _$PackageResponseDtoFromJson(Map<String, dynamic> json) =>
     _PackageResponseDto(
       name: json['name'] as String,

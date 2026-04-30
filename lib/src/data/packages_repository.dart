@@ -19,6 +19,18 @@ class PackagesRepository {
     );
   }
 
+  Future<List<String>> searchPackageNames({
+    required int page,
+    required String search,
+    CancelToken? cancelToken,
+  }) async {
+    return await _remoteDataSource.searchPackageNames(
+      page: page,
+      search: search,
+      cancelToken: cancelToken,
+    );
+  }
+
   Future<Package> fetchPackageDetail({
     required String packageName,
     CancelToken? cancelToken,

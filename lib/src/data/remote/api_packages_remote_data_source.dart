@@ -25,6 +25,21 @@ class ApiPackagesRemoteDataSource implements PackagesRemoteDataSource {
   }
 
   @override
+  Future<List<String>> searchPackageNames({
+    required int page,
+    required String search,
+    CancelToken? cancelToken,
+  }) async {
+    final response = await _dio.get<Map<String, Object?>>(
+      'search',
+      queryParameters: {'page': page, 'q': search},
+      cancelToken: cancelToken,
+    );
+    final dto = SearchPackagesResponseDto.fromJson(response.data!);
+    return dto.packages.map((package) => package.package).toList();
+  }
+
+  @override
   Future<Package> fetchPackageDetail({
     required String packageName,
     CancelToken? cancelToken,

@@ -16,6 +16,25 @@ sealed class PackagesResponseDto with _$PackagesResponseDto {
 }
 
 @freezed
+sealed class SearchPackagesResponseDto with _$SearchPackagesResponseDto {
+  const factory SearchPackagesResponseDto({
+    required List<SearchPackageResponseDto> packages,
+  }) = _SearchPackagesResponseDto;
+
+  factory SearchPackagesResponseDto.fromJson(Map<String, Object?> json) =>
+      _$SearchPackagesResponseDtoFromJson(json);
+}
+
+@freezed
+sealed class SearchPackageResponseDto with _$SearchPackageResponseDto {
+  const factory SearchPackageResponseDto({required String package}) =
+      _SearchPackageResponseDto;
+
+  factory SearchPackageResponseDto.fromJson(Map<String, Object?> json) =>
+      _$SearchPackageResponseDtoFromJson(json);
+}
+
+@freezed
 sealed class PackageResponseDto with _$PackageResponseDto {
   const PackageResponseDto._();
 

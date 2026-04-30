@@ -118,7 +118,7 @@ final class PackagesProvider
     with $FutureModifier<List<Package>>, $FutureProvider<List<Package>> {
   PackagesProvider._({
     required PackagesFamily super.from,
-    required int super.argument,
+    required ({int page, String search}) super.argument,
   }) : super(
          retry: null,
          name: r'packagesProvider',
@@ -134,7 +134,7 @@ final class PackagesProvider
   String toString() {
     return r'packagesProvider'
         ''
-        '($argument)';
+        '$argument';
   }
 
   @$internal
@@ -145,8 +145,8 @@ final class PackagesProvider
 
   @override
   FutureOr<List<Package>> create(Ref ref) {
-    final argument = this.argument as int;
-    return packages(ref, page: argument);
+    final argument = this.argument as ({int page, String search});
+    return packages(ref, page: argument.page, search: argument.search);
   }
 
   @override
@@ -160,10 +160,14 @@ final class PackagesProvider
   }
 }
 
-String _$packagesHash() => r'80e513a788023ab32a924674d43032e2b53ec60d';
+String _$packagesHash() => r'ff8ba9364891b6ad5213b798b65f01e1f217410c';
 
 final class PackagesFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<List<Package>>, int> {
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<List<Package>>,
+          ({int page, String search})
+        > {
   PackagesFamily._()
     : super(
         retry: null,
@@ -173,8 +177,8 @@ final class PackagesFamily extends $Family
         isAutoDispose: true,
       );
 
-  PackagesProvider call({required int page}) =>
-      PackagesProvider._(argument: page, from: this);
+  PackagesProvider call({required int page, required String search}) =>
+      PackagesProvider._(argument: (page: page, search: search), from: this);
 
   @override
   String toString() => r'packagesProvider';
@@ -229,7 +233,7 @@ final class PackageDetailProvider
   }
 }
 
-String _$packageDetailHash() => r'c36ca03da2849a4ba6ec75113266bf470ef72f10';
+String _$packageDetailHash() => r'7d157f15b52c713727a26801c34c544ce5fb9cb6';
 
 final class PackageDetailFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Package>, String> {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PackageSearchBar extends StatelessWidget {
-  const PackageSearchBar({super.key});
+  const PackageSearchBar({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class PackageSearchBar extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: TextField(
+            controller: controller,
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
               hintText: 'search packages',
